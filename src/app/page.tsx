@@ -1,9 +1,11 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import DraggableWindow from '@/components/window';
 
 const Home = () => {
   const [minutes, setMinutes] = useState(25);
   const [seconds, setSeconds] = useState(0);
+  const [popup, setPopup] = useState(true);
   const [isActive, setIsActive] = useState(false);
   const [isCooldown, setIsCooldown] = useState(false);
 
@@ -51,6 +53,7 @@ const Home = () => {
 
   return (
     <div className={`grid place-items-center duration-500 h-screen ${isCooldown ? 'bg-red-200' : 'bg-green-200'}`}>
+      {popup && <DraggableWindow setPopup={setPopup} />}
       <div className='text-center'>
         <div className="progress-bar w-full bg-gray-200 rounded-full h-4 mb-4">
           <div
